@@ -1,0 +1,42 @@
+= FITNESS
+
+The following describes the api for fitness-studio microservice.
+
+== GET ALL PRODUCTS
+
+*Http Request*
+include::{snippets}/products/http-request.adoc[]
+
+*Http Response*
+include::{snippets}/products/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/products/response-fields.adoc[]
+
+*curl Request*
+include::{snippets}/products/curl-request.adoc[]
+
+== GET PRODUCT
+
+*Http Request*
+include::{snippets}/product/http-request.adoc[]
+
+*Path Parameters*
+include::{snippets}/product/path-parameters.adoc[]
+
+*Http Response*
+include::{snippets}/product/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/product/response-fields.adoc[]
+
+*curl Request*
+include::{snippets}/product/curl-request.adoc[]
+
+When the product is not found:
+
+*Http Response*
+include::{snippets}/product-notfound/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/product-notfound/response-fields.adoc[]
