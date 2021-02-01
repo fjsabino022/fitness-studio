@@ -10,7 +10,11 @@ public class Subscription {
 		YEAR;
 	}
 	
+	/**
+	 * Map to the database
+	 */
 	private Long id;
+	
 	private String code;
 	private String description;
 	private Type type;

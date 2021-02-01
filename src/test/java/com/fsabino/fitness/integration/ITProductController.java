@@ -62,8 +62,10 @@ public class ITProductController {
 
 	@Test
 	public void testGetProducts() throws Exception {
+		// When
 		when(productServiceMock.getAllProducts()).thenReturn(createProducts());
 
+		// Then
 		mvc.perform(RestDocumentationRequestBuilders.get("/product/v1"))
 				.andExpect(status().isOk())
 				.andDo(document("products", PREPROCESS_REQUEST, PREPROCESS_RESPONSE,
@@ -80,15 +82,18 @@ public class ITProductController {
 						fieldWithPath("[].subscriptions[].tax").description("Tax Subscription"),
 						fieldWithPath("[].subscriptions[].priceTotal").description("Price Total Subscription (Price + Tax)"),
 						fieldWithPath("[].subscriptions[].fee").description("Fee Subscription (Per Month)"),
-						fieldWithPath("[].subscriptions[].message").description("Message").ignored())));
+						fieldWithPath("[].subscriptions[].message").description("Error Message").ignored())));
 	}
 	
 	@Test
 	public void testGetProduct() throws Exception {
+		// Given
 		String code = "AA1";
 		
+		// When
 		when(productServiceMock.getProductByCode(eq(code))).thenReturn(createProduct());
 
+		// Then
 		mvc.perform(RestDocumentationRequestBuilders.get("/product/v1/{code}", code))
 				.andExpect(status().isOk())
 				.andDo(document("product", PREPROCESS_REQUEST, PREPROCESS_RESPONSE,
@@ -106,21 +111,24 @@ public class ITProductController {
 							fieldWithPath("subscriptions[].tax").description("Tax Subscription"),
 							fieldWithPath("subscriptions[].priceTotal").description("Price Total Subscription (Price + Tax)"),
 							fieldWithPath("subscriptions[].fee").description("Fee Subscription (Per Month)"),
-							fieldWithPath("subscriptions[].message").description("Message").ignored())));
+							fieldWithPath("subscriptions[].message").description("Error Message").ignored())));
 	}
 	
 	@Test
 	public void testGetProductNotFound() throws Exception {
+		// Given
 		String code = "99999999";
 		
+		// When
 		doThrow(ProductNotFoundException.class).when(productServiceMock).getProductByCode(eq(code));
 
+		// Then
 		mvc.perform(RestDocumentationRequestBuilders.get("/product/v1/{code}", code))
 				.andExpect(status().isNotFound())
 				.andDo(document("product-notfound", PREPROCESS_REQUEST, PREPROCESS_RESPONSE,
 					pathParameters(parameterWithName("code").description("Code Product")),
 					responseFields(
-							fieldWithPath("message").description("Message"),
+							fieldWithPath("message").description("Error Message"),
 							fieldWithPath("code").description("Product Code").ignored(),
 							fieldWithPath("name").description("Product Name").ignored(),
 							fieldWithPath("description").description("Product Description").ignored(),

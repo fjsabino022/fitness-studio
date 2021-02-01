@@ -1,4 +1,4 @@
-package com.fsabino.fitness.repository;
+package com.fsabino.fitness.repository.product;
 
 import java.util.List;
 import java.util.Optional;

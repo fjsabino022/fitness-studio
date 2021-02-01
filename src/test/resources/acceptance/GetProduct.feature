@@ -16,7 +16,7 @@ Feature: Get Product
       | AA1  | ABS CLASSES |                   3 |
       | AA2  | YOGA        |                   1 |
 
- 	Scenario: Get product with invalid code
+  Scenario: Get product with invalid code
     Given I am a User
     And I have "99999" as product code
     When I want to get the product

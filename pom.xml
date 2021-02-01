@@ -22,8 +22,6 @@
 	<properties>
 		<java.version>11</java.version>
 		<java.inject.version>1</java.inject.version>
-		<mariadb.connect.version>2.4.4</mariadb.connect.version>
-		<liquibase.version>3.8.0</liquibase.version>
 		<apache.commons.version>4.4</apache.commons.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -68,6 +66,14 @@
 		    <groupId>com.google.guava</groupId>
 		    <artifactId>guava</artifactId>
 		    <version>${guava.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		</dependency>
+			<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
 		</dependency>
 		
 		<!-- Test -->

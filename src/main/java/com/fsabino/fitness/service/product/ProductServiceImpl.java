@@ -14,18 +14,18 @@ import com.fsabino.fitness.dto.ProductDTO;
 import com.fsabino.fitness.exception.ProductNotFoundException;
 import com.fsabino.fitness.helper.ProductHelper;
 import com.fsabino.fitness.persistence.Product;
-import com.fsabino.fitness.repository.ProductRepository;
+import com.fsabino.fitness.repository.product.ProductRepository;
 import com.google.common.collect.Lists;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
 	private final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
-	
+
 	private final ProductRepository productRepository;
 	private final ProductHelper productHelper;
-	
-	@Inject	
+
+	@Inject
 	public ProductServiceImpl(ProductRepository productRepository, ProductHelper productHelper) {
 		this.productRepository = productRepository;
 		this.productHelper = productHelper;
@@ -34,22 +34,19 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductDTO> getAllProducts() {
 		List<Product> products = productRepository.getAllProducts();
-		
+
 		if (CollectionUtils.isEmpty(products)) {
 			return Lists.newArrayList();
 		}
-		return products.stream()
-				.map(productHelper::modelToDTO)
-				.collect(Collectors.toList());
+		return products.stream().map(productHelper::modelToDTO).collect(Collectors.toList());
 	}
 
 	@Override
 	public ProductDTO getProductByCode(String code) throws ProductNotFoundException {
-		Product product = productRepository.getProductByCode(code)
-				.orElseThrow(() -> {
-					logger.error("getProductByCode - Product with id={} could not be found", code);
-					return new ProductNotFoundException(String.format("Product with id=%s could not be found", code));
-				});
+		Product product = productRepository.getProductByCode(code).orElseThrow(() -> {
+			logger.error("getProductByCode - Product with code={} could not be found", code);
+			return new ProductNotFoundException(String.format("Product with code=%s could not be found", code));
+		});
 		return productHelper.modelToDTO(product);
 	}
 }

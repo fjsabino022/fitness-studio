@@ -36,6 +36,15 @@ public class ProductHelper {
 		return productDTO;
 	}
 	
+	public ProductDTO modelToDTOWithoutSubscripcions(Product product) {
+		ProductDTO productDTO = ProductDTO.builder()
+				.code(product.getCode())
+				.description(product.getDescription())
+				.name(product.getName())
+				.build();
+		return productDTO;
+	}
+	
 	private List<SubscriptionDTO> getSubscriptions(List<Subscription> subscriptions) {
 		if (CollectionUtils.isEmpty(subscriptions)) {
 			return Lists.newArrayList();

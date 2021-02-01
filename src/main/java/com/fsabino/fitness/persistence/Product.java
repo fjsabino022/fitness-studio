@@ -4,7 +4,11 @@ import java.util.List;
 
 public class Product {
 
+	/**
+	 * Map to the database
+	 */
 	private Long id;
+	
 	private String code;
 	private String name;
 	private String description;

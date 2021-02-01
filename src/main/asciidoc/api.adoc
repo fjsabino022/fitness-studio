@@ -33,10 +33,101 @@ include::{snippets}/product/response-fields.adoc[]
 *curl Request*
 include::{snippets}/product/curl-request.adoc[]
 
-When the product is not found:
+==== When the product is not found
+
+We get a description in message field.
 
 *Http Response*
 include::{snippets}/product-notfound/http-response.adoc[]
 
 *Response Fields*
 include::{snippets}/product-notfound/response-fields.adoc[]
+
+== BUY SUBSCRIPTION
+
+*Http Request*
+include::{snippets}/add-subscription/http-request.adoc[]
+
+*Request Body*
+include::{snippets}/add-subscription/request-body.adoc[]
+
+*Request Fields*
+include::{snippets}/add-subscription/request-fields.adoc[]
+
+*Http Response*
+include::{snippets}/add-subscription/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/add-subscription/response-fields.adoc[]
+
+*curl Request*
+include::{snippets}/product/curl-request.adoc[]
+
+==== When the arguments are invalid
+
+We get a description in message field.
+
+*Http Response*
+include::{snippets}/add-subscription-unprocessable/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/add-subscription-unprocessable/response-fields.adoc[]
+
+==== When the product subscription is not found
+
+We get a description in message field.
+
+*Http Response*
+include::{snippets}/add-subscription-notfound/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/add-subscription-notfound/response-fields.adoc[]
+
+== MY ACTIVE SUBSCRIPTIONS
+
+*Http Request*
+include::{snippets}/get-subscriptions/http-request.adoc[]
+
+*Http Response*
+include::{snippets}/get-subscriptions/http-response.adoc[]
+
+*curl Request*
+include::{snippets}/get-subscriptions/curl-request.adoc[]
+
+== PAUSE / UNPAUSE MY SUBSCRIPTION
+
+===== Path Variable: client subscription code
+
+*Http Request*
+include::{snippets}/put-subscription/http-request.adoc[]
+
+*Request Body*
+include::{snippets}/put-subscription/request-body.adoc[]
+
+*Request Fields*
+include::{snippets}/put-subscription/request-fields.adoc[]
+
+*Http Response*
+include::{snippets}/put-subscription/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/put-subscription/response-fields.adoc[]
+
+*curl Request*
+include::{snippets}/put-subscription/curl-request.adoc[]
+
+== CANCEL MY SUBSCRIPTION
+
+===== Path Variable: client subscription code
+
+*Http Request*
+include::{snippets}/delete-subscription/http-request.adoc[]
+
+*Http Response*
+include::{snippets}/delete-subscription/http-response.adoc[]
+
+*Response Fields*
+include::{snippets}/delete-subscription/response-fields.adoc[]
+
+*curl Request*
+include::{snippets}/delete-subscription/curl-request.adoc[]
